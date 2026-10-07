@@ -976,7 +976,7 @@ public class MovimientosControl implements Serializable{
 										tinmmcont.setMcontRetorno((short)0);
 										tinmmcont.setMcontSedeSerial(tinpmcont.getPmcontSedeSerial());
 										Short tiop = integracionServicio.tipoOperacion(archMoviDTO.getCamp1(),sd,prog);
-										tinmmcont.setMcontTopCodi(tiop!=null && !tiop.equals("")?tiop:0);
+										tinmmcont.setMcontTopCodi(tiop!=null ? tiop:0);
 										tinmmcont.setMcontTxerror("");
 										tinmmconts.add(tinmmcont);
 										
@@ -1516,7 +1516,7 @@ public class MovimientosControl implements Serializable{
 						tinmcxc.setCxcDclCodd(tinpcxc.getPcxcDclCodd());
 						tinmcxc.setCxcCliCoda(tinddemc.getDemcTerCoda().trim());
 						tinmcxc.setCxcArbCods(tinddemc.getDemcArbCods().trim());
-						tinmcxc.setCxcCxcValo(tinddemc.getDemcDmcVacr()!=null && !tinddemc.getDemcDmcVacr().equals("") ? tinddemc.getDemcDmcVacr(): tinddemc.getDemcDmcVadb());
+						tinmcxc.setCxcCxcValo(tinddemc.getDemcDmcVacr()!=null ? tinddemc.getDemcDmcVacr(): tinddemc.getDemcDmcVadb());
 						tinmcxc.setCxcMonCodi(tinpcxc.getPcxcMonCodi());
 						//adicion campos control de cambios 2019-05-07
 						tinmcxc.setCxcTipCodi(cuent.getCuenTipCodi());
@@ -2346,7 +2346,7 @@ public class MovimientosControl implements Serializable{
 						}
 						
 					}					 
-					tindfacr.setFacrFacFecc((fecFact!=null && !fecFact.equals("")) ? fecFact:archMoviDTO.getCamp2());
+					tindfacr.setFacrFacFecc(fecFact!=null ? fecFact:archMoviDTO.getCamp2());
 					tindfacr.setFacrFacNumc(Integer.valueOf(archMoviDTO.getCamp12()));
 					tindfacr.setFacrTopCodc(tinmcxc.getCxcTopCodi()>0 ? tinmcxc.getCxcTopCodi() : Short.valueOf(String.valueOf(tinpfact.getPfactTopCodi())));
 					
@@ -2769,7 +2769,7 @@ public class MovimientosControl implements Serializable{
 				SimpleDateFormat formatValida= new SimpleDateFormat("yyyy/MM/dd");
 				String fff =  formatValida.format(fechaMov);
 				Date fechValidaEntra = formatValida.parse(fff);
-				if(fecha!=null && !fecha.equals("")){
+				if(fecha!=null){
 					if(fechValidaEntra.compareTo(fecha)==0){
 						cerrarNhFec();
 						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"",prop.getProperty("errorFechaIgual")));
