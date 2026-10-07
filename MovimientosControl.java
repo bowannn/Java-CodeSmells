@@ -2467,20 +2467,10 @@ public class MovimientosControl implements Serializable{
 		case MOVI_IPS:
 			switch (moviTipo) {
 					case "MIF":
-						recibo = true;
-						break;
 					case "FI2":
-						recibo = true;		
-						break;
 					case "FI3":
-						recibo = true;
-						break;
 					case "FI4":
-						recibo = true;
-						break;
 					case "FI5":
-						recibo = true;
-						break;
 					case "SAI":
 						recibo = true;
 						break;
