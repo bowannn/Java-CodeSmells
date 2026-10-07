@@ -35,6 +35,7 @@ import com.hiveag.geepy.pojo.Authority;
 import com.hiveag.geepy.pojo.AuthorityId;
 import com.hiveag.geepy.pojo.Person;
 import com.hiveag.geepy.util.GestionArchivos;
+import java.security.SecureRandom;
 
 @Service
 public class PersonService {
@@ -318,8 +319,8 @@ public class PersonService {
 	public int randomGen() {
 		int max = 9999;
 		int min = 1000;
-		Random random = new Random();
-		int randomInteger = random.nextInt((max - min) + 1) + min;
+		SecureRandom secureRandom = new SecureRandom();
+		int randomInteger = secureRandom.nextInt((max - min) + 1) + min;
 		return randomInteger;
 	}
 
