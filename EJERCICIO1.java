@@ -63,6 +63,8 @@ import co.com.comfaboy.herramietas.dbintegra.dto.FacturasDTO;
 import co.com.comfaboy.herramietas.dbintegra.dto.MoviDTO;
 import co.com.comfaboy.herramietas.dbintegra.dto.ReciboDirectoDTO;
 import co.com.comfaboy.herramietas.dbintegra.dto.TransaccionDTO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Controlador de cargue de movimientos
@@ -75,6 +77,7 @@ import co.com.comfaboy.herramietas.dbintegra.dto.TransaccionDTO;
 public class MovimientosControl implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(MovimientosControl.class.getName());
 	
 	private static final int MOVI_IPS=1;
 	private static final int MOVI_EPS=2;
@@ -624,7 +627,7 @@ public class MovimientosControl implements Serializable{
 						datos = dat.split(",");
 						count = count++;
 //						if(datos[5].replace("^\\s*","").trim().matches("[+-]?\\d*(\\.\\d+)?")){
-							System.out.println("HERRAMIENTAS-->dato cargado: "+datos[8]+datos[9]);
+							LOGGER.log(Level.INFO, "HERRAMIENTAS-->dato cargado: {0}{1}", new Object[]{datos[8], datos[9]});							
 							archivoDTO.setCamp1(fileMovNehot.getFileName().substring(0,3));
 							archivoDTO.setCamp4(String.valueOf(validaDatoReferncia(datos[9].replace("^\\s*","").trim())));
 							Date fecha = new Date();
@@ -2137,7 +2140,7 @@ public class MovimientosControl implements Serializable{
 							tinmcoli.setColiCflCodi(tinpcoli.getPcoliCflCodi());
 							tinmcoli.setColiArbCods(tinpcoli.getPcoliArbCods().trim());
 							//integracionServicio.consltarCuenta(archMoviDTO.getCamp5(),prog,sd).toString()
-							System.out.println("ERP-->HERRAMIENTAS: CUB_NUME COLI "+cuent.getCuentCubNume());
+							LOGGER.log(Level.INFO, "ERP-->HERRAMIENTAS: CUB_NUME COLI {0}", cuent.getCuentCubNume());
 							tinmcoli.setColiCubNume(cuent.getCuentCubNume()); 
 							tinmcoli.setColiBanCodc((short)0);
 							tinmcoli.setColiMonCodi(tinpcoli.getPcoliMonCodi());
